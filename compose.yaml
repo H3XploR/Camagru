@@ -8,9 +8,11 @@ services:
        MYSQL_PASSWORD: yantoine_password
        MYSQL_ALLOW_EMPTY_PASSWORD: no
        MYSQL_RANDOM_ROOT_PASSWORD: yes
-       network_mode: host
+       network_mode: bridge
     volumes:
        - db-data:/var/lib/mysql
+    ports:
+       - "3306:3306"
 
 volumes:
   db-data:
