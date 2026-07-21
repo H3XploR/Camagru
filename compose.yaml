@@ -1,3 +1,11 @@
 services:
   database:
-    image: mysql:9.7.1
+    image: 
+       mysql:9.7.1
+    environment:
+       MYSQL_DATABASE: bdd_camagru
+       MYSQL_USER: yantoine
+       MYSQL_PASSWORD: yantoine_password
+       MYSQL_ALLOW_EMPTY_PASSWORD: no
+       MYSQL_RANDOM_ROOT_PASSWORD: yes
+       network_mode: host
