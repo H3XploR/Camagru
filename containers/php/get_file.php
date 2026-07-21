@@ -1,10 +1,11 @@
 <?php echo "executing get_file.php"; 
 
-$uploaddir = '/var/www/uploads/';
-$uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
+$uploaddir = './data/www/uploads/';
+$uploadfile = $uploaddir . basename($_FILES['userfile']['tmp_name']);
 
 echo '<pre>';
-if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
+echo 'uploadfile: ' . $uploadfile;
+if (move_uploaded_file($_FILES['userfile']['name'], $uploadfile)) {
     echo "Le fichier est valide, et a été téléchargé
            avec succès. Voici plus d'informations :\n";
 } else {
@@ -14,7 +15,6 @@ if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
 
 echo 'Voici quelques informations de débogage :';
 print_r($_FILES);
-
 echo '</pre>';
 
 ?>
