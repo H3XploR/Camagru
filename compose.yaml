@@ -1,5 +1,5 @@
 services:
-  database:
+  mysql:
     image: 
        mysql:9.7.1
     environment:
@@ -9,3 +9,10 @@ services:
        MYSQL_ALLOW_EMPTY_PASSWORD: no
        MYSQL_RANDOM_ROOT_PASSWORD: yes
        network_mode: host
+    volumes:
+       - db-data:/etc/data
+
+volumes:
+  db-data:
+    name: "db-data"
+    driver: local
