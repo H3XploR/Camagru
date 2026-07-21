@@ -10,7 +10,7 @@ services:
        MYSQL_RANDOM_ROOT_PASSWORD: yes
        network_mode: host
     volumes:
-       - db-data:/etc/data
+       - db-data:/var/lib/mysql
 
 volumes:
   db-data:
