@@ -25,6 +25,14 @@ services:
     ports:
       - "8080:80"
 
+  php_fpm:
+    build:
+      context: ./containers/php/.
+      dockerfile: Dockerfile
+    container_name:
+      camagru_php_fpm
+
+
 volumes:
   db-data:
     name: "db-data"
