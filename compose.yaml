@@ -16,7 +16,12 @@ services:
 
   nginx:
     build:
-      ./containers/nginx/.
+      context: ./containers/nginx/.
+      dockerfile: Dockerfile
+    container_name:
+      camagru_nginx
+    ports:
+      - "8080:80"
 
 volumes:
   db-data:
