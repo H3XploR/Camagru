@@ -14,6 +14,10 @@ services:
     ports:
        - "3306:3306"
 
+  nginx:
+    build:
+      ./containers/nginx/.
+
 volumes:
   db-data:
     name: "db-data"
