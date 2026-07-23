@@ -31,6 +31,8 @@ services:
       dockerfile: Dockerfile
     container_name:
       camagru_php_fpm
+    ports:
+      - "9000:9000"
 
 
 volumes:
