@@ -9,10 +9,14 @@
 	<p>
 		Bienvenue sur le site de Camagru.
 	</p>
-	<form method="post">
+	<form method="post" accept="name" name="Connection" action="connection.php">
 		<label>
-			Name:
-			<input name="submitted-name" autocomplete="name" />
+			Username:
+			<input name="submitted-username" autocomplete="username" />
+		</label>
+		<label>
+			Password:
+			<input password="submitted-password" autocomplete="password" />
 		</label>
 		<button>Save</button>
 	</form>
