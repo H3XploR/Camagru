@@ -8,16 +8,16 @@ class BDD extends PDO {
         if (empty($tables)) {
             error_log("[INFO] La base de données est actuellement vide (aucune table).");
             error_log("[INFO] Lancement d'initialisation de la bdd");
-			$this->init_bdd($this);
+			$this->init_bdd();
         }
         else {
             error_log("[SUCCESS] La bdd est déjà initialisée (table users existante)");
         }
     }
-    public function init_bdd($pdo) {
+    public function init_bdd() {
         error_log("[INFO] Tentative d'initialisation de la bdd (table users)");
         try {
-            $pdo->exec("CREATE TABLE IF NOT EXISTS users (
+            $this->exec("CREATE TABLE IF NOT EXISTS users (
                 id INT AUTO_INCREMENT PRIMARY KEY, 
                 username VARCHAR(255) NOT NULL UNIQUE, 
                 password VARCHAR(255) NOT NULL, 
@@ -28,6 +28,22 @@ class BDD extends PDO {
         } catch (PDOException $e) {
             error_log("[ERROR] Echec de l'initialisation de la BDD : " . $e->getMessage());
         }
+    }
+
+    public function add_user_bdd($username, $password, $email): bool {
+        try {
+            $stmt = $this->prepare("INSERT INTO users (username, password, email) VALUES (:username, :password, :email)");
+            $stmt->execute([
+                'username' => $username,
+                'password' => $password,
+                'email' => $email
+            ]);
+            error_log("[SUCCESS] Utilisateur ajouté");
+        } catch (PDOException $e) {
+            error_log("[ERROR] Echec de l'ajout de l'utilisateur : " . $e->getMessage());
+            return false;
+        }
+        return true;
     }
 }
 ?>
