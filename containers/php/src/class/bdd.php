@@ -32,10 +32,15 @@ class BDD extends PDO {
 
     public function add_user_bdd($username, $password, $email): bool {
         try {
+            $hash_password = password_hash($password, PASSWORD_DEFAULT);
+            if ($hash_password === false) {
+                error_log("[ERROR] Echec du hash du mot de passe");
+                return false;
+            }
             $stmt = $this->prepare("INSERT INTO users (username, password, email) VALUES (:username, :password, :email)");
             $stmt->execute([
                 'username' => $username,
-                'password' => $password,
+                'password' => $hash_password,
                 'email' => $email
             ]);
             error_log("[SUCCESS] Utilisateur ajouté");
