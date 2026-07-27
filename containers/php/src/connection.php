@@ -18,8 +18,18 @@
         if (empty($tables)) {
             error_log("[INFO] La base de données est actuellement vide (aucune table).");
             error_log("[INFO] Lancement d'initialisation de la bdd");
+			init_bdd($pdo);
         } else {
-            error_log("[INFO] Tables existantes : " . implode(", ", $tables));
+            error_log("[SUCCESS] La bdd est déjà initialisée (table users existante)");
+			error_log("[INFO] Recherche de l'utilisateur dans la bdd");
+			$stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username");
+			$stmt->execute(['username' => $_POST['username']]);
+			$user = $stmt->fetch();
+			if ($user) {
+				error_log("[SUCCESS] Utilisateur trouvé");
+			} else {
+				error_log("[ERROR] Utilisateur non trouvé");
+			}
         }
     } catch (PDOException $e) {
         error_log("[ERROR] Connexion échouée : " . $e->getMessage());
