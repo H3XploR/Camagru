@@ -1,4 +1,6 @@
 <?php
+session_start();
+include_once 'header.php';
 require_once __DIR__ . "/class/bdd.php";
 error_log("[INFO] Fichier PHP de register lancé");
 if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email'])) {
@@ -33,7 +35,5 @@ echo "<input name='password' autocomplete='password' />";
 echo "</label>";
 echo "<button>Register</button>";
 echo "</form>";
-echo "<p>Tu as déjà un compte?</p>";
-echo "<a href='index.html'>Connexion</a>";
 }
 ?>

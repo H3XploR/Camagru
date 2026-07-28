@@ -1,5 +1,7 @@
 <?php
 	session_start();
+	include_once 'header.php';
+    echo "<h1>Login</h1>";
     echo "<form method='post' accept='name' name='Connection' action='connection.php'>";
 	echo "<label>";
 	echo "Username:";
@@ -10,7 +12,5 @@
 	echo "<input name='password' autocomplete='password' />";
 	echo "</label>";
 	echo "<button>Connect</button>";
-	echo "<p>Tu n'a pas encore de compte?</p>";
-	echo "<a href='register.php'>Créer un compte</a>";
 	echo "</form>";
 ?>
