@@ -1,6 +1,5 @@
 <?php
 session_start();
-include_once 'header.php';
 require_once __DIR__ . "/class/bdd.php";
 error_log("[INFO] Fichier PHP de register lancé");
 if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email'])) {
@@ -19,6 +18,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['emai
 }
 else {
     
+include_once 'header.php';
 echo "<h1>Register</h1>";
 echo "<form method='post' action='register.php'>";
 echo "<label>";
