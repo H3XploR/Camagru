@@ -19,6 +19,7 @@
 					error_log("[SUCCESS] Mot de passe correct");
 					$_SESSION['user_id'] = $user['id'];
 					$_SESSION['username'] = $user['username'];
+					session_write_close();
 					header("Location: main_page.php");
 					exit();
 				} else {
@@ -46,4 +47,17 @@
             error_log("[ERROR] Connexion échouée : " . $e->getMessage());
         }
     }
+	if (session_status() == PHP_SESSION_NONE) {
+		echo "<p>Session non démarrée</p>";
+	}
+	elseif (session_status() == PHP_SESSION_ACTIVE) {
+		echo "<p>Session active</p>";
+	}
+	elseif (session_status() == PHP_SESSION_DISABLED) {
+		echo "<p>Session désactivée</p>";
+	}
+	else {
+		echo "<p>Session status unknown</p>";
+	}
+	echo "<p>Tu n'as rien a faire ici ! </p>";
 ?>

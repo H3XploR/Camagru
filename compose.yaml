@@ -24,6 +24,9 @@ services:
       camagru_nginx
     ports:
       - "8080:80"
+    volumes:
+      - ./containers/nginx/data:/data
+      - ./containers/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
 
   php_fpm:
     build:
@@ -33,6 +36,8 @@ services:
       camagru_php_fpm
     ports:
       - "9000:9000"
+    volumes:
+      - ./containers/php/src:/var/www/html
 
 
 volumes:

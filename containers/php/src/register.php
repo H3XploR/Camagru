@@ -8,7 +8,8 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['emai
     $bdd = new BDD();
     $ret = $bdd->add_user_bdd($_POST['username'], $_POST['password'], $_POST['email']);
     if ($ret) {
-        echo "<p>Utilisateur ajouté</p>";
+        header("Location: index.html");
+        exit();
     }
     else {
         echo "<p>Erreur lors de l'ajout de l'utilisateur</p>";
