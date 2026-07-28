@@ -6,6 +6,7 @@
 </head>
 
 <body>
+	<?php echo "<p> TEST </p>"; ?>
 	<p>
 		Bienvenue sur le site de Camagru.
 	</p>

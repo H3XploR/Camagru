@@ -10,5 +10,5 @@ if (empty($_SESSION['count'])) {
 }
 ?>
 <p>
- Voir doc SESSION PHP Bonjour <?php echo $_SESSION['username']; ?>, vous avez vu cette page <?php echo $_SESSION['count']; ?> fois.
+ Bonjour <?php echo $_SESSION['username']; ?>, vous avez vu cette page <?php echo $_SESSION['count']; ?> fois.
 </p>

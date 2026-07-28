@@ -8,7 +8,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['emai
     $bdd = new BDD();
     $ret = $bdd->add_user_bdd($_POST['username'], $_POST['password'], $_POST['email']);
     if ($ret) {
-        header("Location: index.html");
+        header("Location: index.php");
         exit();
     }
     else {
