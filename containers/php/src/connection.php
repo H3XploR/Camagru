@@ -20,7 +20,7 @@
 					$_SESSION['user_id'] = $user['id'];
 					$_SESSION['username'] = $user['username'];
 					session_write_close();
-					header("Location: main_page.php");
+					header("Location: index.php");
 					exit();
 				} else {
 					error_log("[ERROR] Mot de passe incorrect");
